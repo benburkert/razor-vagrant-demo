@@ -2,12 +2,14 @@
 # vi: set ft=ruby :
 
 Vagrant::Config.run do |config|
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
 
-  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "base"
+  config.vm.define :razor do |box_config|
+    box_config.vm.box = 'razor'
+
+    box_config.vm.box_url = 'http://files.vagrantup.com/precise32.box'
+
+    box_config.vm.customize ["modifyvm", :id, "--memory", 1024]
+  end
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
