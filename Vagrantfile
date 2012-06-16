@@ -9,6 +9,8 @@ Vagrant::Config.run do |config|
     box_config.vm.box_url = 'http://files.vagrantup.com/precise32.box'
 
     box_config.vm.customize ["modifyvm", :id, "--memory", 1024]
+
+    box_config.vm.network :hostonly, '172.16.0.2', :adapter => 2
   end
 
   # The url from where the 'config.vm.box' box will be fetched if it
