@@ -3,14 +3,31 @@
 
 Vagrant::Config.run do |config|
 
-  config.vm.define :razor do |box_config|
-    box_config.vm.box = 'razor'
+  config.vm.define :gold do |box_config|
+    box_config.vm.box = 'gold'
+
+    box_config.vm.host_name  = 'gold.localdomain'
 
     box_config.vm.box_url = 'http://files.vagrantup.com/precise32.box'
 
     box_config.vm.customize ["modifyvm", :id, "--memory", 1024]
+    box_config.vm.customize ["modifyvm", :id, "--name", 'gold.localdomain']
 
     box_config.vm.network :hostonly, '172.16.0.2', :adapter => 2
+
+    box_config.vm.provision :puppet, :module_path => 'modules'
+  end
+
+  config.vm.define :agent1 do |box_config|
+    box_config.vm.box = 'agent1'
+
+
+    box_config.vm.box_url = 'https://github.com/downloads/benburkert/bootstrap-razor/pxe-blank.box'
+
+    box_config.vm.boot_mode = 'gui'
+    box_config.ssh.port = 2222
+
+    box_config.vm.customize ["modifyvm", :id, "--name", 'agent1.localdomain']
   end
 
   # The url from where the 'config.vm.box' box will be fetched if it
