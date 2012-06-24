@@ -1,0 +1,142 @@
+{
+  "project_page": "UNKNOWN",
+  "author": "puppetlabs",
+  "dependencies": [
+
+  ],
+  "license": "UNKNOWN",
+  "summary": "UNKNOWN",
+  "description": "UNKNOWN",
+  "source": "UNKNOWN",
+  "version": "0.0.4",
+  "name": "puppetlabs/vcsrepo",
+  "checksums": {
+    "spec/unit/puppet/provider/vcsrepo/hg_spec.rb": "830e07ce9b140fcd3ae7515e3e582e04",
+    "spec/spec_helper.rb": "63b2c95f52bf796d7138c87d4f718afa",
+    "README.GIT.markdown": "c708dcb0aacd3a35d02a0c1b0c3d7d79",
+    "examples/git/clone.pp": "6f478faae44c3662085051b4d52cba7d",
+    "spec/fixtures/hg_tags.txt": "8383048b15adb3d58a92ea0c8b887537",
+    "lib/puppet/provider/vcsrepo/bzr.rb": "bccc75cc202396faf15331ba1e0c1cf8",
+    "lib/puppet/provider/vcsrepo/cvs.rb": "d083915b04b10c9be58466019595c65e",
+    "spec/support/provider_example_group.rb": "cd74e9f2a19b545f6b962250a86beed0",
+    "spec/support/filesystem_helpers.rb": "982a58fb186dad382f56504f57887139",
+    "README.BZR.markdown": "f202a6ee6d297c09c89c5bce2569ee25",
+    "LICENSE": "3169c4d06a92f27ab28d53c1179cc1a7",
+    "lib/puppet/provider/vcsrepo/svn.rb": "7051dc60de0cdc1f084f73630bddd222",
+    "examples/svn/server.pp": "9ccbe33ba0c62f021078ca2fe278da2c",
+    "examples/hg/init_repo.pp": "8a75124bdac1a5c5bf42ce95f3fe446a",
+    "spec/unit/puppet/provider/vcsrepo/bzr_spec.rb": "595f6e1e12d0d9b52a9144ab62a2ca86",
+    "spec/fixtures/bzr_version_info.txt": "5edb13429faf2f0b9964b4326ef49a65",
+    "spec/support/fixture_helpers.rb": "4f2ee9e618fcb57054af0a7fd481a97f",
+    "Rakefile": "cc0e9a5225430b6a13c74ae74032ed33",
+    "spec/fixtures/hg_parents.txt": "efc28a1bd3f1ce7fb4481f76feed3f6e",
+    "spec/fixtures/git_branch_a.txt": "2371229e7c1706c5ab8f90f0cd57230f",
+    "examples/cvs/local.pp": "19f5a4735e178b9e0679fa278b709156",
+    "spec/unit/puppet/provider/vcsrepo/git_spec.rb": "64d2b83fd473b1c37feadcc7879e7af4",
+    "lib/puppet/provider/vcsrepo/git.rb": "179ee0f9b0340e34b78f22c9a957efb1",
+    "examples/hg/clone.pp": "eaf67b6291acc11a1bbbc6aa50665d78",
+    "spec/unit/puppet/provider/vcsrepo/cvs_spec.rb": "7154cbacd1c79e94be444a3e7fceeed6",
+    "README.markdown": "c6ead7d4a1e4512929711a0348642707",
+    "README.HG.markdown": "2ec41d70129c53ee6a6831795bfeda40",
+    "examples/bzr/branch.pp": "d1e7b85316be4bcfe2662850381724aa",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "README.SVN.markdown": "cf3b9d062c06f59ae8772204a3cc6806",
+    "README.CVS.markdown": "d7b48f6abd22a79f402dc445e70612db",
+    "lib/puppet/provider/vcsrepo/hg.rb": "639b73ce8ea6109411aa9f147e472454",
+    "examples/git/working_copy_init.pp": "2653c8efae3b4baa06789ad11ebc962e",
+    "examples/git/bare_init.pp": "3c89c22cd86cf800a6b535cd91d8810b",
+    "spec/unit/puppet/type/README.markdown": "de26a7643813abd6c2e7e28071b1ef94",
+    "spec/unit/puppet/provider/vcsrepo/svn_spec.rb": "ab41d490cbf74a51d68c0bfbfe2297f8",
+    "spec/fixtures/svn_info.txt": "978db25720a098e5de48388fe600c062",
+    "Modulefile": "980a342ab9a28931cfb8dd7ff8842f92",
+    "lib/puppet/type/vcsrepo.rb": "843c1381d5b67939f64fbdf2936b9dd4",
+    "lib/puppet/provider/vcsrepo.rb": "f5b8a90080b8c27e2656af8605148928",
+    "examples/svn/checkout.pp": "a71ae12a097f357933883ca3d0f6514e",
+    "examples/cvs/remote.pp": "b3189b4cb90ca69a7f7c451b4b39fcaa",
+    "examples/bzr/init_repo.pp": "82b98ba099ecb361a6d4b9842a175c5c"
+  },
+  "types": [
+    {
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "Absolute path to repository"
+        },
+        {
+          "name": "source",
+          "doc": "The source URI for the repository"
+        },
+        {
+          "name": "fstype",
+          "doc": "Filesystem type  Requires features filesystem_types."
+        },
+        {
+          "name": "owner",
+          "doc": "The user/uid that owns the repository files"
+        },
+        {
+          "name": "group",
+          "doc": "The group/gid that owns the repository files"
+        },
+        {
+          "name": "excludes",
+          "doc": "Files to be excluded from the repository"
+        },
+        {
+          "name": "force",
+          "doc": "Force repository creation, destroying any files on the path in the process.  Valid values are `true`, `false`."
+        },
+        {
+          "name": "compression",
+          "doc": "Compression level  Requires features gzip_compression."
+        },
+        {
+          "name": "basic_auth_username",
+          "doc": "HTTP Basic Auth username  Requires features basic_auth."
+        },
+        {
+          "name": "basic_auth_password",
+          "doc": "HTTP Basic Auth password  Requires features basic_auth."
+        },
+        {
+          "name": "identity",
+          "doc": "SSH identity file  Requires features ssh_identity."
+        }
+      ],
+      "providers": [
+        {
+          "name": "bzr",
+          "doc": "Supports Bazaar repositories  Required binaries: `bzr`.    Default for `bzr` == `exists`.    Supported features: `reference_tracking`."
+        },
+        {
+          "name": "cvs",
+          "doc": "Supports CVS repositories/workspaces  Required binaries: `cvs`.    Default for `cvs` == `exists`.    Supported features: `gzip_compression`, `reference_tracking`."
+        },
+        {
+          "name": "git",
+          "doc": "Supports Git repositories  Required binaries: `git`.    Default for `git` == `exists`.    Supported features: `bare_repositories`, `reference_tracking`, `ssh_identity`."
+        },
+        {
+          "name": "hg",
+          "doc": "Supports Mercurial repositories  Required binaries: `hg`.    Default for `hg` == `exists`.    Supported features: `reference_tracking`."
+        },
+        {
+          "name": "svn",
+          "doc": "Supports Subversion repositories  Required binaries: `svn`, `svnadmin`.    Default for `svn` == `exists`.    Supported features: `basic_auth`, `filesystem_types`, `reference_tracking`."
+        }
+      ],
+      "properties": [
+        {
+          "name": "ensure",
+          "doc": "  Valid values are `present`, `bare`, `absent`, `latest`."
+        },
+        {
+          "name": "revision",
+          "doc": "The revision of the repository  Values can match `/^\\S+$/`."
+        }
+      ],
+      "name": "vcsrepo",
+      "doc": "A local version control repository"
+    }
+  ]
+}

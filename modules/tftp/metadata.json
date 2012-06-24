@@ -1,0 +1,36 @@
+{
+  "description": "tftp Puppet Module.",
+  "license": "Apache 2.0",
+  "version": "0.1.0",
+  "project_page": "https://github.com/puppetlabs/puppetlabs-tftp",
+  "checksums": {
+    "spec/spec_helper.rb": "a9011f921e3efe2360858929d9a5d940",
+    "spec/puppetlabs_spec_helper.rb": "b8e2c657fb91ba7129e679d133169986",
+    "manifests/params.pp": "8e043755b9eb06c78e584f0eecae451d",
+    "spec/puppetlabs_spec/files.rb": "5f7d2da815b3545f1e3347fac84a36c8",
+    "CHANGELOG": "99dcecbddfaa783fee90b4c2ae7fae8d",
+    "LICENSE": "b3f8a01d8699078d82e8c3c992307517",
+    "spec/fixtures/manifests/site.pp": "d41d8cd98f00b204e9800998ecf8427e",
+    "spec/classes/tftp_spec.rb": "2e84ecbcc1adfed30925e804e961ecc4",
+    "README.md": "936e765a989a04ec6a82f2cd43ee881e",
+    "Rakefile": "d9786d59f48aa5c63bd97c5c5faafaa8",
+    "spec/puppetlabs_spec/matchers.rb": "8e77dc7317de7fc2ff289fb716623b6c",
+    "spec/puppetlabs_spec/fixtures.rb": "795629c4bcad28bf3bb91ff6e5ce97b1",
+    "spec/defines/tftp_file_spec.rb": "b888721d0752681c73b3bfc72a1a2722",
+    "tests/init.pp": "d6d93d3ff8a806917f27c99b8433fb95",
+    "templates/tftpd-hpa.erb": "78808d309b535a4335ac8e569a9313ac",
+    "manifests/file.pp": "30d035e785f5af9919fec68d0b63c2f2",
+    "Modulefile": "3228cf0995c108ba43170bbda873c4b5",
+    "manifests/init.pp": "98df3c74cba7bad2d7cb5ad1dfebcd75"
+  },
+  "source": "git://github.com/puppetlabs/puppetlabs-tftp",
+  "name": "puppetlabs-tftp",
+  "dependencies": [
+
+  ],
+  "types": [
+
+  ],
+  "summary": "tftp Puppet Module",
+  "author": "puppetlabs"
+}
