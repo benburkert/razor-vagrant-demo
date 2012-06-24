@@ -44,7 +44,7 @@ task :microkernel => 'microkernel:setup'
 
 namespace :ubuntu do
 
-  url = 'http://releases.ubuntu.com/precise/ubuntu-12.04-server-i386.iso'
+  url = 'http://releases.ubuntu.com/precise/ubuntu-12.04-server-amd64.iso'
   path = File.basename(url)
   remote_path = "/tmp/#{path}"
 
@@ -57,7 +57,7 @@ namespace :ubuntu do
   end
 
   task :setup => :upload do
-    razor('image', 'add', 'mk', remote_path, 'ubuntu_precise', '12.04')
+    razor('image', 'add', 'os', remote_path, 'ubuntu_precise', '12.04')
   end
 end
 
