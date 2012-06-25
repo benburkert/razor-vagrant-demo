@@ -10,7 +10,8 @@ introduction](http://puppetlabs.com/blog/puppet-razor-module/).
 
 ## Step 1: Setup
 
-Bundle & boot the servers:
+First install VirtualBox and the VirtualBox Extension Pack. Next bundle
+& boot the servers:
 
 ```
 $ bundle install
