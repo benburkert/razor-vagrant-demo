@@ -79,3 +79,45 @@ namespace :ubuntu do
 end
 
 task :ubuntu => 'ubuntu:setup'
+
+namespace :scientific do
+
+  url = 'ftp://ftp.scientificlinux.org/linux/scientific/6.2/x86_64/iso/SL-62-x86_64-2012-02-06-boot.iso'
+  file_name = File.basename(url)
+  remote_file_name = "/tmp/#{file_name}"
+
+  file file_name do
+    download(url)
+  end
+
+  task :upload => file_name do
+    scp(:gold, file_name, remote_file_name)
+  end
+
+  task :setup => :upload do
+    razor('image', 'add', 'os', remote_file_name, 'scientific', '6.2')
+  end
+end
+
+task :scientific => 'scientific:setup'
+
+namespace :centos do
+
+  url = "http://mirror.metrocast.net/centos/6.2/isos/x86_64/CentOS-6.2-x86_64-minimal.iso"
+  file_name = File.basename(url)
+  remote_file_name = "/tmp/#{file_name}"
+
+  file file_name do
+    download(url)
+  end
+
+  task :upload => file_name do
+    scp(:gold, file_name, remote_file_name)
+  end
+
+  task :setup => :upload do
+    razor('image', 'add', 'os', remote_file_name, 'centos', '6.2')
+  end
+end
+
+task :centos => 'centos:setup'
