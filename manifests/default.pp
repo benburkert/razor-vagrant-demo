@@ -29,7 +29,7 @@ node gold {
     user    => 'root',
     group   => 'root',
     cwd     => '/opt/razor',
-    path    => '/usr/bin',
+    path    => ['/usr/bin','/bin'],
     require => Class['razor', 'dhcp']
   }
 }
