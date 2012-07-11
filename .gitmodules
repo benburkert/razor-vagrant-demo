@@ -1,0 +1,30 @@
+[submodule "modules/apt"]
+	path = modules/apt
+	url = https://github.com/puppetlabs/puppetlabs-apt
+[submodule "modules/concat"]
+	path = modules/concat
+	url = git://github.com/ripienaar/puppet-concat.git
+[submodule "modules/dhcp"]
+	path = modules/dhcp
+	url = git://github.com/puppetlabs/puppetlabs-dhcp.git
+[submodule "modules/mongodb"]
+	path = modules/mongodb
+	url = git@github.com:puppetlabs/puppetlabs-mongodb.git
+[submodule "modules/nodejs"]
+	path = modules/nodejs
+	url = git://github.com/puppetlabs/puppetlabs-nodejs
+[submodule "modules/razor"]
+	path = modules/razor
+	url = git@github.com:puppetlabs/puppetlabs-razor.git
+[submodule "modules/stdlib"]
+	path = modules/stdlib
+	url = git://github.com/puppetlabs/puppetlabs-stdlib
+[submodule "modules/sudo"]
+	path = modules/sudo
+	url = https://github.com/saz/puppet-sudo.git
+[submodule "modules/tftp"]
+	path = modules/tftp
+	url = git://github.com/puppetlabs/puppetlabs-tftp
+[submodule "modules/vcsrepo"]
+	path = modules/vcsrepo
+	url = https://github.com/puppetlabs/puppetlabs-vcsrepo.git
