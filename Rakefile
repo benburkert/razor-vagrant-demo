@@ -23,7 +23,7 @@ end
 
 namespace :microkernel do
 
-  url = 'https://github.com/downloads/puppetlabs/Razor/rz_mk_dev-image.0.8.9.0.iso'
+  url = 'https://github.com/downloads/puppetlabs/Razor/rz_mk_dev-image.0.9.0.4.iso'
   path = File.basename(url)
   remote_path = "/tmp/#{path}"
 
@@ -62,3 +62,25 @@ namespace :ubuntu do
 end
 
 task :ubuntu => 'ubuntu:setup'
+
+namespace :centos do
+
+  url = 'http://www.gtlib.gatech.edu/pub/centos/6.2/isos/x86_64/CentOS-6.2-x86_64-bin-DVD1.iso'
+  path = File.basename(url)
+  remote_path = "/tmp/#{path}"
+
+  file path do
+    system("wget #{url}")
+  end
+
+  task :upload => path do
+    scp(:gold, path, remote_path)
+  end
+
+  task :setup => :upload do
+    razor('image', 'add', 'os', remote_path, 'centos_dvd1', '6.2')
+  end
+end
+
+
+task :centos => 'centos:setup'
