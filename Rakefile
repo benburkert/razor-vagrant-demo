@@ -59,6 +59,12 @@ def download(url, options = {})
   end
 end
 
+desc "Start here. Provision & configure the Razor server."
+task :start do
+  sh('librarian-puppet install')
+  sh('vagrant up')
+end
+
 DISTROS.each do |name, options|
   namespace name do
     url               = options[:url]
