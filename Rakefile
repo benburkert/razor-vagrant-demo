@@ -7,6 +7,28 @@ HOSTS = {
   'gold' => '172.16.0.2',
 }
 
+DISTROS = {
+  'microkernel' => {
+    :type => :mk,
+    :url  => 'https://github.com/downloads/puppetlabs/Razor/rz_mk_dev-image.0.8.9.0.iso',
+  },
+  'ubuntu' => {
+    :release => 'ubuntu_precise',
+    :version => '12.04',
+    :url     => 'http://releases.ubuntu.com/precise/ubuntu-12.04-server-amd64.iso',
+  },
+  'scientific' => {
+    :release => 'scientific',
+    :version => '6.2',
+    :url     => 'https://github.com/downloads/puppetlabs/Razor/rz_mk_dev-image.0.8.9.0.iso',
+  },
+  'centos' => {
+    :release => 'centos',
+    :version => '6.2',
+    :url     => 'http://mirror.metrocast.net/centos/6.2/isos/x86_64/CentOS-6.2-x86_64-minimal.iso',
+  },
+}
+
 def ssh(host, user = USER, password = PASSWORD)
   (@ssh_connections ||= {})[host.to_s] ||= net_ssh(HOSTS[host.to_s], user, password)
 end
@@ -37,87 +59,28 @@ def download(url, options = {})
   end
 end
 
+DISTROS.each do |name, options|
+  namespace name do
+    url               = options[:url]
+    file_name         = File.basename(url)
+    remote_file_name  = "/tmp/#{file_name}"
 
-namespace :microkernel do
+    file file_name do
+      download(url)
+    end
 
-  url = 'https://github.com/downloads/puppetlabs/Razor/rz_mk_dev-image.0.8.9.0.iso'
-  file_name = File.basename(url)
-  remote_file_name = "/tmp/#{file_name}"
+    task :upload => file_name do
+      scp(:gold, file_name, remote_file_name)
+    end
 
-  file file_name do
-    download(url)
+    task :setup => :upload do
+      if options[:type] == :mk
+        razor('image', 'add', 'mk', remote_file_name)
+      else
+        razor('image', 'add', 'os', remote_file_name, options[:release], options[:version])
+      end
+    end
   end
 
-  task :upload => file_name do
-    scp(:gold, file_name, remote_file_name)
-  end
-
-  task :setup => :upload do
-    razor('image', 'add', 'mk', remote_file_name)
-  end
+  task name => "#{name}:setup"
 end
-
-task :microkernel => 'microkernel:setup'
-
-namespace :ubuntu do
-
-  url = 'http://releases.ubuntu.com/precise/ubuntu-12.04-server-amd64.iso'
-  file_name = File.basename(url)
-  remote_file_name = "/tmp/#{file_name}"
-
-  file file_name do
-    download(url)
-  end
-
-  task :upload => file_name do
-    scp(:gold, file_name, remote_file_name)
-  end
-
-  task :setup => :upload do
-    razor('image', 'add', 'os', remote_file_name, 'ubuntu_precise', '12.04')
-  end
-end
-
-task :ubuntu => 'ubuntu:setup'
-
-namespace :scientific do
-
-  url = 'ftp://ftp.scientificlinux.org/linux/scientific/6.2/x86_64/iso/SL-62-x86_64-2012-02-06-boot.iso'
-  file_name = File.basename(url)
-  remote_file_name = "/tmp/#{file_name}"
-
-  file file_name do
-    download(url)
-  end
-
-  task :upload => file_name do
-    scp(:gold, file_name, remote_file_name)
-  end
-
-  task :setup => :upload do
-    razor('image', 'add', 'os', remote_file_name, 'scientific', '6.2')
-  end
-end
-
-task :scientific => 'scientific:setup'
-
-namespace :centos do
-
-  url = "http://mirror.metrocast.net/centos/6.2/isos/x86_64/CentOS-6.2-x86_64-minimal.iso"
-  file_name = File.basename(url)
-  remote_file_name = "/tmp/#{file_name}"
-
-  file file_name do
-    download(url)
-  end
-
-  task :upload => file_name do
-    scp(:gold, file_name, remote_file_name)
-  end
-
-  task :setup => :upload do
-    razor('image', 'add', 'os', remote_file_name, 'centos', '6.2')
-  end
-end
-
-task :centos => 'centos:setup'
