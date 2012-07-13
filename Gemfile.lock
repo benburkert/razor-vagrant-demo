@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/benburkert/librarian-puppet.git
-  revision: 4abba81f13684e20931b088e64483f68ebf34ee5
+  revision: ecf07faf8b872e3d7b3974bdd5f3ffc46305e786
   specs:
     librarian-puppet (0.9.1)
       json
