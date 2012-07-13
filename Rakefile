@@ -8,9 +8,11 @@ HOSTS = {
 }
 
 def ssh(host, user = USER, password = PASSWORD)
-  (@ssh_connections ||= {})[host.to_s] ||= begin
-                                             Net::SSH.start(HOSTS[host.to_s], user, :password => password)
-                                           end
+  (@ssh_connections ||= {})[host.to_s] ||= net_ssh(HOSTS[host.to_s], user, password)
+end
+
+def net_ssh(address, user, password)
+  Net::SSH.start(address, user, :password => password)
 end
 
 def scp(host, local_path, remote_path, user = USER, password = PASSWORD)
@@ -21,10 +23,9 @@ def razor(*a)
   puts ssh(:gold).exec!(['sudo /opt/razor/bin/razor', *a].join(' '))
 end
 
-def download(options)
-  url = options[:url]
+def download(url, options = {})
   file_name = options[:as] || File.basename(url)
-  folder = options[:to] || "."
+  folder    = options[:to] || "."
 
   file_path = folder + "/" + file_name
 
@@ -44,7 +45,7 @@ namespace :microkernel do
   remote_file_name = "/tmp/#{file_name}"
 
   file file_name do
-    download(:url => url)
+    download(url)
   end
 
   task :upload => file_name do
@@ -65,7 +66,7 @@ namespace :ubuntu do
   remote_file_name = "/tmp/#{file_name}"
 
   file file_name do
-    download(:url => url)
+    download(url)
   end
 
   task :upload => file_name do
