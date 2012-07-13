@@ -15,7 +15,7 @@ First install VirtualBox and the VirtualBox Extension Pack. Next bundle
 
 ```
 $ bundle install
-$ bundle exec vagrant up
+$ bundle exec rake start
 ```
 
 The `gold` server will boot first and kick off a puppet run. This will
