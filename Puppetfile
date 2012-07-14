@@ -1,6 +1,5 @@
 forge "http://forge.puppetlabs.com"
 
-mod 'puppetlabs/razor'
-
-mod 'concat', :git => 'https://github.com/puppetlabs/puppetlabs-concat.git'
-mod 'dhcp',   :git => 'https://github.com/puppetlabs/puppetlabs-dhcp.git'
+mod 'puppetlabs/razor',  :git => 'https://github.com/puppetlabs/puppetlabs-razor.git'
+mod 'puppetlabs/concat', :git => 'https://github.com/puppetlabs/puppetlabs-concat.git'
+mod 'puppetlabs/dhcp',   :git => 'https://github.com/puppetlabs/puppetlabs-dhcp.git'
