@@ -24,7 +24,7 @@ DISTROS = {
     'scientific' => {
         :release => 'scientific',
         :version => '6.2',
-        :url     => 'https://github.com/downloads/puppetlabs/Razor/rz_mk_dev-image.0.8.9.0.iso',
+        :url     => 'http://ftp.scientificlinux.org/linux/scientific/6.2/x86_64/iso/SL-62-x86_64-2012-02-06-Install-DVD.iso',
     },
     'centos' => {
         :release => 'centos',
