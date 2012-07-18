@@ -51,7 +51,7 @@ def download(url, options = {})
 
   file_path = folder + "/" + file_name
 
-  command = "curl #{url} -o #{file_path}"
+  command = "curl -L #{url} -o #{file_path}"
   if File.exists?(file_path)
     puts "File #{file_path} already exists. skipping download!"
   else
