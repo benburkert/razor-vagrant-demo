@@ -28,6 +28,7 @@ Vagrant::Config.run do |config|
     box_config.ssh.port = 2222
 
     box_config.vm.customize ["modifyvm", :id, "--name", 'agent1.localdomain']
+    box_config.vm.customize ["modifyvm", :id, "--nictype1", 'Am79C973']
   end
 
   # The url from where the 'config.vm.box' box will be fetched if it
