@@ -15,7 +15,7 @@ DISTROS = {
   'ubuntu' => {
     :release => 'ubuntu_precise',
     :version => '12.04',
-    :url     => 'http://releases.ubuntu.com/precise/ubuntu-12.04-server-amd64.iso',
+    :url     => 'http://releases.ubuntu.com/precise/ubuntu-12.04.1-server-amd64.iso',
   },
   'scientific' => {
     :release => 'scientific',
