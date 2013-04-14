@@ -23,7 +23,7 @@ install razor and setup dhcp on the internal VM network. Once the gold
 server finished the `agent1` box will boot. `agent1` initially fails to
 PXE boot because razor is not configured with a microkernel.
 
-![MicroKernel Missing](/benburkert/razor-vagrant-demo/raw/master/images/microkernel_missing.png)
+![MicroKernel Missing](images/microkernel_missing.png)
 
 ## Step 2: Register a MicroKernel
 
@@ -34,7 +34,7 @@ $ bundle exec rake microkernel
 The `microkernel` rake task downloads and registers the razor microkernel.
 At this point `agent1` will boot the microkernel.
 
-![MicroKernel Console](/benburkert/razor-vagrant-demo/raw/master/images/microkernel_console.png)
+![MicroKernel Console](images/microkernel_console.png)
 
 The `agent1` server will register itself with razor. We can inspect it
 via the `razor node` command.
@@ -46,7 +46,7 @@ $ cd /opt/razor
 $ bin/razor node
 ```
 
-![razor node](/benburkert/razor-vagrant-demo/raw/master/images/razor_node.png)
+![razor node](images/razor_node.png)
 
 The `razor node attributes` command will show the attributes of `agent1`.
 
@@ -54,7 +54,7 @@ The `razor node attributes` command will show the attributes of `agent1`.
 $ bin/razor node attributes ...
 ```
 
-![razor node attributes](/benburkert/razor-vagrant-demo/raw/master/images/razor_node_attributes.png)
+![razor node attributes](images/razor_node_attributes.png)
 
 ## Step 3: Register an OS
 
@@ -74,7 +74,7 @@ $ cd /opt/razor
 $ bin/razor image
 ```
 
-![razor image](/benburkert/razor-vagrant-demo/raw/master/images/razor_image.png)
+![razor image](images/razor_image.png)
 
 ## Step 4: Create a Model
 
@@ -84,7 +84,7 @@ Add a model for `ubuntu\_precise` with the new image.
 $ bin/razor model add template=ubuntu_precise label=install_precise image_uuid=...
 ```
 
-![razor model add](/benburkert/razor-vagrant-demo/raw/master/images/razor_model_add.png)
+![razor model add](images/razor_model_add.png)
 
 ## Step 5: Add a Policy
 
@@ -94,18 +94,18 @@ Create a policy to install ubuntu on `agent1`.
 $ bin/razor policy add --template=linux_deploy --label=precise --broker-uuid=none --tags=virtualbox_vm --enabled --model-uuid=...
 ```
 
-![razor policy add](/benburkert/razor-vagrant-demo/raw/master/images/razor_policy_add.png)
+![razor policy add](images/razor_policy_add.png)
 
 ## Step 6: Ubuntu
 
 On the next checkin by `agent1` the server will reboot. Instead of booting
 the microkernel, razor serves `agent1` the Ubuntu installer.
 
-![Ubuntu Installer](/benburkert/razor-vagrant-demo/raw/master/images/ubuntu_installer.png)
+![Ubuntu Installer](images/ubuntu_installer.png)
 
 Once that finishes you can login as root with your password.
 
-![Ubuntu Console](/benburkert/razor-vagrant-demo/raw/master/images/ubuntu_console.png)
+![Ubuntu Console](images/ubuntu_console.png)
 
 ## Step 7: Cleanup
 
